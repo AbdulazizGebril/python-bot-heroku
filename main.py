@@ -19,11 +19,11 @@ from config import (consumer_key,
 
 
 # Twitter API Keys
-if 'CONSUMER_KEY' in os.environ:
-    consumer_key = os.environ['CONSUMER_KEY']
-    consumer_secret = os.environ['CONSUMER_SECRET']
-    access_token = os.environ['ACCESS_TOKEN']
-    access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
+# if 'CONSUMER_KEY' in os.environ:
+consumer_key = os.environ['CONSUMER_KEY']
+consumer_secret = os.environ['CONSUMER_SECRET']
+access_token = os.environ['ACCESS_TOKEN']
+access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
 
 
 # In[3]:
