@@ -20,10 +20,10 @@ import json
 
 # Twitter API Keys
 # if 'CONSUMER_KEY' in os.environ:
-consumer_key = environ.get['CONSUMER_KEY']
-consumer_secret = environ.get['CONSUMER_SECRET']
-access_token = environ.get['ACCESS_TOKEN']
-access_token_secret = environ.get['ACCESS_TOKEN_SECRET']
+consumer_key = environ['CONSUMER_KEY']
+consumer_secret = environ['CONSUMER_SECRET']
+access_token = environ['ACCESS_TOKEN']
+access_token_secret = environ['ACCESS_TOKEN_SECRET']
 
 print(consumer_key)
 
