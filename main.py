@@ -10,18 +10,18 @@ import tweepy
 import time
 from datetime import datetime
 import json
-
+from config import (consumer_key,
+                    consumer_secret,
+                    access_token,
+                    access_token_secret)
 
 # In[2]:
 
 
 # Twitter API Keys
-try:
-    from config import (consumer_key, 
-                        consumer_secret, 
-                        access_token, 
-                        access_token_secret)
-except:
+is_prod = os.environ.get('IS_HEROKU', None)
+
+if is_prod:
     consumer_key = os.environ['CONSUMER_KEY']
     consumer_secret = os.environ['CONSUMER_SECRET']
     access_token = os.environ['ACCESS_TOKEN']
@@ -50,7 +50,7 @@ def TweetOut(minutes):
 
 
 #Declare a 'beginning'
-then = datetime(2018, 7, 5, 15, 17, 25)        
+then = datetime(2018, 7, 5, 15, 17, 25)
 
 
 # In[ ]:
@@ -58,10 +58,10 @@ then = datetime(2018, 7, 5, 15, 17, 25)
 
 # Infinitely loop
 while(True):
-    
+
     # Make something to tweet to avoid duplicates
-    now  = datetime.now() 
-    duration = now - then                         
+    now  = datetime.now()
+    duration = now - then
     seconds = duration.total_seconds()
     minutes = round(divmod(seconds, 60)[0])
 
@@ -70,4 +70,3 @@ while(True):
 
     # Once tweeted, wait 60 seconds before doing anything else
     time.sleep(60)
-
