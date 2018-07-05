@@ -1,31 +1,35 @@
 
 # coding: utf-8
 
-# In[1]:
+# In[ ]:
 
 
 # Dependencies
-from os import environ
+import os
 import tweepy
 import time
+from datetime import datetime
 import json
-# from config import (consumer_key,
-#                     consumer_secret,
-#                     access_token,
-#                     access_token_secret)
+from config import (consumer_key, 
+                    consumer_secret, 
+                    access_token, 
+                    access_token_secret)
 
 
-# In[2]:
+# In[ ]:
 
 
 # Twitter API Keys
-# if 'CONSUMER_KEY' in os.environ:
-consumer_key = environ['CONSUMER_KEY']
-consumer_secret = environ['CONSUMER_SECRET']
-access_token = environ['ACCESS_TOKEN']
-access_token_secret = environ['ACCESS_TOKEN_SECRET']
-
-print(consumer_key)
+try:
+    consumer_key = os.environ['CONSUMER_KEY']
+    consumer_secret = os.environ['CONSUMER_SECRET']
+    access_token = os.environ['ACCESS_TOKEN']
+    access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
+except:
+    consumer_key = consumer_key
+    consumer_secret = consumer_secret
+    access_token = access_token 
+    access_token_secret = access_token_secret
 
 
 # In[ ]:
@@ -41,16 +45,21 @@ api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 
 # Create a function that tweets
-def TweetOut(tweet_number):
+def TweetOut(minutes):
     api.update_status(
-        f"Can't stop. Won't stop. Chatting! This is Tweet #{tweet_number}!")
+        f"Can't stop. Won't stop. I've been tweeting for {minutes} minutes!")
 
 
 # In[ ]:
 
 
-# Create a function that calls the TweetOut function every minute
-counter = 0
+# Make something to tweet to avoid duplicates
+
+then = datetime(2018, 7, 5, 15, 17, 25)        
+now  = datetime.now() 
+duration = now - then                         
+seconds = duration.total_seconds()
+minutes = round(divmod(seconds, 60)[0])
 
 
 # In[ ]:
@@ -60,10 +69,8 @@ counter = 0
 while(True):
 
     # Call the TweetQuotes function and specify the tweet number
-    TweetOut(counter)
+    TweetOut(minutes)
 
     # Once tweeted, wait 60 seconds before doing anything else
     time.sleep(60)
 
-    # Add 1 to the counter prior to re-running the loop
-    counter = counter + 1
