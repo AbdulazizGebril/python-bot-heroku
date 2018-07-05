@@ -5,7 +5,7 @@
 
 
 # Dependencies
-import os
+from os import environ
 import tweepy
 import time
 import json
@@ -20,10 +20,10 @@ import json
 
 # Twitter API Keys
 # if 'CONSUMER_KEY' in os.environ:
-consumer_key = CONSUMER_KEY
-consumer_secret = CONSUMER_SECRET
-access_token = ACCESS_TOKEN
-access_token_secret = ACCESS_TOKEN_SECRET
+consumer_key = environ.get['CONSUMER_KEY']
+consumer_secret = environ.get['CONSUMER_SECRET']
+access_token = environ.get['ACCESS_TOKEN']
+access_token_secret = environ.get['ACCESS_TOKEN_SECRET']
 
 print(consumer_key)
 
