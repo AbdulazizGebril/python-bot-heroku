@@ -9,10 +9,10 @@ import os
 import tweepy
 import time
 import json
-from config import (consumer_key, 
-                    consumer_secret, 
-                    access_token, 
-                    access_token_secret)
+# from config import (consumer_key, 
+#                     consumer_secret, 
+#                     access_token, 
+#                     access_token_secret)
 
 
 # In[2]:
@@ -25,8 +25,10 @@ consumer_secret = os.environ['CONSUMER_SECRET']
 access_token = os.environ['ACCESS_TOKEN']
 access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
 
+print(consumer_key)
 
-# In[3]:
+
+# In[ ]:
 
 
 # Setup Tweepy API Authentication
@@ -35,7 +37,7 @@ auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
 
-# In[4]:
+# In[ ]:
 
 
 # Create a function that tweets
@@ -44,14 +46,14 @@ def TweetOut(tweet_number):
         f"Can't stop. Won't stop. Chatting! This is Tweet #{tweet_number}!")
 
 
-# In[5]:
+# In[ ]:
 
 
 # Create a function that calls the TweetOut function every minute
 counter = 0
 
 
-# In[6]:
+# In[ ]:
 
 
 # Infinitely loop
