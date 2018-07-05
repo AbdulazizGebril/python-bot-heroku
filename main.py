@@ -10,18 +10,20 @@ import tweepy
 import time
 from datetime import datetime
 import json
-
+from config import (CONSUMER_KEY,
+                    CONSUMER_SECRET,
+                    ACCESS_TOKEN,
+                    ACCESS_TOKEN_SECRET)
 
 # In[2]:
-
+consumer_key = CONSUMER_KEY
+consumer_secret = CONSUMER_SECRET
+access_token = ACCESS_TOKEN
+access_token_secret = ACCESS_TOKEN_SECRET
 
 # Twitter API Keys
-try:
-    from config import (consumer_key, 
-                        consumer_secret,
-                        access_token,
-                        access_token_secret)
-except:
+
+if 'DYNO' in os.environ:
     consumer_key = os.environ['CONSUMER_KEY']
     consumer_secret = os.environ['CONSUMER_SECRET']
     access_token = os.environ['ACCESS_TOKEN']
