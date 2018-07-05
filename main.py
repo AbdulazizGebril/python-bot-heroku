@@ -16,10 +16,10 @@ from config import (CONSUMER_KEY,
                     ACCESS_TOKEN_SECRET)
 
 # In[2]:
-consumer_key = CONSUMER_KEY
-consumer_secret = CONSUMER_SECRET
-access_token = ACCESS_TOKEN
-access_token_secret = ACCESS_TOKEN_SECRET
+consumer_key = ''
+consumer_secret = ''
+access_token = ''
+access_token_secret = ''
 
 # Twitter API Keys
 
@@ -28,6 +28,11 @@ if 'DYNO' in os.environ:
     consumer_secret = os.environ['CONSUMER_SECRET']
     access_token = os.environ['ACCESS_TOKEN']
     access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
+else:
+    consumer_key = CONSUMER_KEY
+    consumer_secret = CONSUMER_SECRET
+    access_token = ACCESS_TOKEN
+    access_token_secret = ACCESS_TOKEN_SECRET
 
 
 # In[3]:
