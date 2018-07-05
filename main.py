@@ -49,13 +49,8 @@ def TweetOut(minutes):
 # In[5]:
 
 
-# Make something to tweet to avoid duplicates
-
+#Declare a 'beginning'
 then = datetime(2018, 7, 5, 15, 17, 25)        
-now  = datetime.now() 
-duration = now - then                         
-seconds = duration.total_seconds()
-minutes = round(divmod(seconds, 60)[0])
 
 
 # In[ ]:
@@ -63,6 +58,12 @@ minutes = round(divmod(seconds, 60)[0])
 
 # Infinitely loop
 while(True):
+    
+    # Make something to tweet to avoid duplicates
+    now  = datetime.now() 
+    duration = now - then                         
+    seconds = duration.total_seconds()
+    minutes = round(divmod(seconds, 60)[0])
 
     # Call the TweetQuotes function and specify the tweet number
     TweetOut(minutes)
