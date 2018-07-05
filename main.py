@@ -1,33 +1,59 @@
+
+# coding: utf-8
+
+# In[ ]:
+
+
 # Dependencies
 import tweepy
 import time
 import json
-from config import consumer_key, consumer_secret, access_token, access_token_secret
+from config import (consumer_key, 
+                    consumer_secret, 
+                    access_token, 
+                    access_token_secret)
+
+
+# In[ ]:
+
 
 # Twitter API Keys
-consumer_key = consumer_key
-consumer_secret = consumer_secret
-access_token = access_token
-access_token_secret = access_token_secret
+if 'CONSUMER_KEY' in os.environ:
+    consumer_key = os.environ['CONSUMER_KEY']
+    consumer_secret = os.environ['CONSUMER_SECRET']
+    access_token = os.environ['ACCESS_TOKEN']
+    access_token_secret = os.environ['ACCESS_TOKEN_SECRET']
+
+
+# In[ ]:
+
 
 # Setup Tweepy API Authentication
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 api = tweepy.API(auth, parser=tweepy.parsers.JSONParser())
 
+
+# In[ ]:
+
+
 # Create a function that tweets
-
-
 def TweetOut(tweet_number):
     api.update_status(
-        "Can't stop. Won't stop. Chatting! This is Tweet #%s!" %
-        tweet_number)
+        f"Can't stop. Won't stop. Chatting! This is Tweet #{tweet_number}!")
+
+
+# In[ ]:
 
 
 # Create a function that calls the TweetOut function every minute
 counter = 0
 
-# Infinite loop
+
+# In[ ]:
+
+
+# Infinitely loop
 while(True):
 
     # Call the TweetQuotes function and specify the tweet number
@@ -38,3 +64,4 @@ while(True):
 
     # Add 1 to the counter prior to re-running the loop
     counter = counter + 1
+
