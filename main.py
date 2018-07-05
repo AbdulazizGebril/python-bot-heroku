@@ -16,7 +16,10 @@ from config import (consumer_key,
                     access_token_secret)
 
 # In[2]:
-
+consumer_key = consumer_key
+consumer_secret = consumer_secret
+access_token = access_token
+access_token_secret = access_token_secret
 
 # Twitter API Keys
 is_prod = os.environ.get('IS_HEROKU', None)
